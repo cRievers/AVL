@@ -22,7 +22,7 @@ public class AVLTree {
         return Math.abs(getHeight(node.left) - getHeight(node.right));
     }
 
-    public int greatest(int a, int b){
+    private int greatest(int a, int b){
         if(a > b) return a;
         else return b;
     }
@@ -149,5 +149,37 @@ public class AVLTree {
             node2 = node2.left;
         }
         return node1;
+    }
+
+    public int countElements(Node root){
+        if(root == null)
+            return 0;
+        else
+            return countElements(root.left) + 1 + countElements(root.right);
+    }
+
+    public void printPreOrder(Node root){
+        if(root != null){
+            System.out.print(root.key + "(");
+            printPreOrder(root.left);
+            printPreOrder(root.right);
+            System.out.print(")");
+        }
+    }
+    
+    public void printInOrder(Node root){
+        if(root != null){
+            printInOrder(root.left);
+            System.out.print(root.key + " ");
+            printInOrder(root.right);
+        }
+    }
+    
+    public void printPosOrder(Node root){
+        if(root != null){
+            printPosOrder(root.left);
+            printPosOrder(root.right);
+            System.out.print(root.key + " ");
+        }
     }
 }
